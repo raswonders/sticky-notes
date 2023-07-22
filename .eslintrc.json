@@ -1,0 +1,16 @@
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": "latest", 
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true 
+  },
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    // Add any other ESLint rules you want to enforce
+  }
+}
