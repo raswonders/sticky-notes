@@ -1,5 +1,4 @@
 import "./style.css";
+import { addNote } from "./src/components/note";
 
-document.querySelector("#app").innerHTML = `
-  <h1>Hello World</h1>
-`;
+window.addEventListener("click", addNote);
