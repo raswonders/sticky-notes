@@ -1,4 +1,5 @@
 import "./note.css";
+import { moveToTop, noteGallery } from "../utils";
 
 const headerHeight = document
   .querySelector("header")
@@ -15,8 +16,13 @@ function createNote(x, y) {
   note.innerHTML = noteContents;
   note.style.left = `${x}px`;
   note.style.top = `${y}px`;
-  note.setAttribute("draggable", "true");
 
+  // moves note to the top
+  note.addEventListener("click", (event) => {
+    moveToTop(event.currentTarget, noteGallery);
+    event.currentTarget.querySelector(".note-text").focus();
+  });
+  note.setAttribute("draggable", "true");
   return note;
 }
 
