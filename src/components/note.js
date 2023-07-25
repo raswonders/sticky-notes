@@ -39,8 +39,6 @@ function dragElement(elmnt) {
   elmnt.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
-    console.log('sure')
-    e = e;
     e.preventDefault();
     // get the mouse cursor position at startup:
     pos3 = e.clientX;
