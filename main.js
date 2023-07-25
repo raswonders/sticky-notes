@@ -11,8 +11,3 @@ window.addEventListener("click", (event) => {
 });
 
 //class for notes = "note"
-
-
-
-
-

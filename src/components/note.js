@@ -5,13 +5,13 @@ const headerHeight = document
   .querySelector("header")
   .getBoundingClientRect().height;
 
-let counter = 1 // to be used as id for element drag
+let counter = 1; // to be used as id for element drag
 function createNote(x, y) {
   const noteContents = `
     <div class="note-deleter" id = "sticky${counter}" ></div>
     <textarea class="note-text" placeholder="text here" value="text here"></textarea>
   `;
-  counter ++
+  counter++;
   y = y - headerHeight;
   const note = document.createElement("div");
   note.classList.add("note");
@@ -24,18 +24,17 @@ function createNote(x, y) {
     moveToTop(event.currentTarget, noteGallery);
     event.currentTarget.querySelector(".note-text").focus();
   });
-  note.addEventListener('mousedown', dragElement(note)); // element drag
+  note.addEventListener("mousedown", dragElement(note)); // element drag
   note.setAttribute("draggable", "true");
   return note;
 }
 
-
-
-
-
 function dragElement(elmnt) {
-  console.log(elmnt)
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  console.log(elmnt);
+  var pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
   elmnt.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
@@ -49,7 +48,7 @@ function dragElement(elmnt) {
   }
 
   function elementDrag(e) {
-    console.log('yup')
+    console.log("yup");
     e = e || window.event;
     e.preventDefault();
     // calculate the new cursor position:
@@ -58,8 +57,8 @@ function dragElement(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
   }
 
   function closeDragElement() {
