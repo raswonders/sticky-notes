@@ -7,16 +7,15 @@ window.addEventListener("click", (event) => {
     removeNote(event.target.parentElement);
     return;
   }
-  addNote();
+  addNote(event.pageX, event.pageY);
 });
 
 //class for notes = "note"
 
-const draggables = document.querySelectorAll('.note');
-const container = document.querySelector('main');
+const draggables = document.querySelectorAll(".note");
 
-draggables.forEach(draggable => {
-  draggable.addEventListener('dragstart', () => {
-    console.log('drag start');
-  })
-})
+draggables.forEach((draggable) => {
+  draggable.addEventListener("dragstart", () => {
+    console.log("drag start");
+  });
+});

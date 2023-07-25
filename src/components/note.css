@@ -1,5 +1,5 @@
 .note {
-  position: relative;
+  position: absolute;
   width: 250px;
   height: 250px;
   box-shadow: 2px 2px 4px gray;

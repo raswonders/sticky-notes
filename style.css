@@ -7,11 +7,8 @@ body {
   background: #fcefa5;
 }
 
-#app {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 48px;
-  padding: 48px;
+.note-gallery {
+  position: relative;
 }
 
 header {
