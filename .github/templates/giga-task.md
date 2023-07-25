@@ -1,9 +1,9 @@
-<!-- Issue title should mirror the Epic Title. -->
-# Epic Title
+<!-- Issue title should mirror the GigaTask Title. -->
+# GigaTask Title
 
 Feature: Awesome Feature Title
 
-## Epic Description
+## GigaTask Description
 
 This Feature will...
 

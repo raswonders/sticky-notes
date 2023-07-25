@@ -2,6 +2,9 @@ html,
 body {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fcefa5;
 }
 
 #app {
@@ -9,4 +12,19 @@ body {
   flex-wrap: wrap;
   gap: 48px;
   padding: 48px;
+}
+
+header {
+  height: 75px;
+  background: #d0d0d0;
+  filter: drop-shadow(0 0 3px black);
+  display: flex;
+  align-items: center;
+}
+
+header span {
+  font-family: "Itim", cursive;
+  padding-left: 2rem;
+  font-size: 2.5rem;
+  letter-spacing: 0.3rem;
 }
