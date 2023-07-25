@@ -8,6 +8,8 @@ function createNote() {
   const note = document.createElement("div");
   note.classList.add("note");
   note.innerHTML = noteContents;
+  note.attr
+  note.setAttribute('draggable', 'true');
 
   return note;
 }
