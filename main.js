@@ -9,3 +9,14 @@ window.addEventListener("click", (event) => {
   }
   addNote();
 });
+
+//class for notes = "note"
+
+const draggables = document.querySelectorAll('.note');
+const container = document.querySelector('main');
+
+draggables.forEach(draggable => {
+  draggable.addEventListener('dragstart', () => {
+    console.log('drag start');
+  })
+})
