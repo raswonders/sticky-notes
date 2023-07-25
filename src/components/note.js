@@ -8,16 +8,15 @@ function createNote() {
   const note = document.createElement("div");
   note.classList.add("note");
   note.innerHTML = noteContents;
-  note.attr
   note.setAttribute('draggable', 'true');
 
   return note;
 }
 
 export function addNote() {
-  document.querySelector("#app").appendChild(createNote());
+  document.querySelector(".note-gallery").appendChild(createNote());
 }
 
 export function removeNote(note) {
-  document.querySelector("#app").removeChild(note);
+  document.querySelector(".note-gallery").removeChild(note);
 }

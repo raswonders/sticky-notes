@@ -7,7 +7,7 @@ body {
   background: #fcefa5;
 }
 
-#app {
+.note-gallery {
   display: flex;
   flex-wrap: wrap;
   gap: 48px;
