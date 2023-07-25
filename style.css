@@ -8,10 +8,7 @@ body {
 }
 
 .note-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 48px;
-  padding: 48px;
+  position: relative;
 }
 
 header {
