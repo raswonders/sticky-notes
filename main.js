@@ -11,11 +11,3 @@ window.addEventListener("click", (event) => {
 });
 
 //class for notes = "note"
-
-const draggables = document.querySelectorAll(".note");
-
-draggables.forEach((draggable) => {
-  draggable.addEventListener("dragstart", () => {
-    console.log("drag start");
-  });
-});
