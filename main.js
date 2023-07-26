@@ -1,5 +1,10 @@
 import "./style.css";
-import { addNote, removeNote } from "./src/components/note";
+import {
+  addNote,
+  removeNote,
+  saveSessionData,
+  loadSessionData,
+} from "./src/components/note";
 
 window.addEventListener("dblclick", (event) => {
   if (event.target.classList.contains("note-text")) return;
@@ -10,6 +15,7 @@ window.addEventListener("dblclick", (event) => {
 window.addEventListener("click", (event) => {
   if (event.target.classList.contains("note-deleter")) {
     removeNote(event.target.parentElement);
+    saveSessionData();
     return;
   }
 });
@@ -20,8 +26,4 @@ document.querySelector('#add-button').addEventListener("click", (event) => {
   addNote(event.pageX/2.25, event.pageY/2.25);
 });
 
-
-
-
-
-//class for notes = "note"
+loadSessionData();

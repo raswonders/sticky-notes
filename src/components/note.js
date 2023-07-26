@@ -26,6 +26,7 @@ function createNote(x, y) {
   });
   note.addEventListener("mousedown", dragElement(note)); // element drag
   note.setAttribute("draggable", "true");
+  saveSessionData();
   return note;
 }
 
@@ -65,6 +66,8 @@ function dragElement(elmnt) {
     /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
+
+    saveSessionData();
   }
 }
 
@@ -74,4 +77,39 @@ export function addNote(x, y) {
 
 export function removeNote(note) {
   document.querySelector(".note-gallery").removeChild(note);
+}
+
+// Local Storage Section
+export function saveSessionData() {
+  const notes = document.querySelectorAll(".note");
+  const sessionData = [];
+
+  notes.forEach((note) => {
+    const content = note.querySelector(".note-text").value;
+    const position = { top: note.style.top, left: note.style.left };
+
+    const noteData = { content, position };
+    sessionData.push(noteData);
+  });
+
+  localStorage.setItem("sticky_notes_session", JSON.stringify(sessionData));
+}
+
+// Load localStorage Data
+export function loadSessionData() {
+  const sessionData = localStorage.getItem("sticky_notes_session");
+
+  if (sessionData) {
+    const notesData = JSON.parse(sessionData);
+
+    // Loop through the saved data and create stickies
+    notesData.forEach((noteData) => {
+      const { content, position } = noteData;
+      const note = createNote(parseInt(position.left), parseInt(position.top));
+      note.querySelector(".note-text").value = content;
+
+      // Append the note to the container
+      document.querySelector(".note-gallery").appendChild(note);
+    });
+  }
 }
