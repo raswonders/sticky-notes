@@ -1,6 +1,8 @@
 import "./note.css";
 import { moveToTop, noteGallery } from "../utils";
 
+window.addEventListener('beforeunload', saveSessionData);
+
 const headerHeight = document
   .querySelector("header")
   .getBoundingClientRect().height;
@@ -26,7 +28,6 @@ function createNote(x, y, offset=true) {
   });
   note.addEventListener("mousedown", dragElement(note)); // element drag
   note.setAttribute("draggable", "true");
-  saveSessionData();
   return note;
 }
 
@@ -66,8 +67,6 @@ function dragElement(elmnt) {
     /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
-
-    saveSessionData();
   }
 }
 

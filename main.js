@@ -2,7 +2,6 @@ import "./style.css";
 import {
   addNote,
   removeNote,
-  saveSessionData,
   loadSessionData,
 } from "./src/components/note";
 
@@ -15,7 +14,6 @@ window.addEventListener("dblclick", (event) => {
 window.addEventListener("click", (event) => {
   if (event.target.classList.contains("note-deleter")) {
     removeNote(event.target.parentElement);
-    saveSessionData();
     return;
   }
 });
