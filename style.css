@@ -25,3 +25,13 @@ header span {
   font-size: 2.5rem;
   letter-spacing: 0.3rem;
 }
+
+
+#add-button{
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  bottom: 20px;
+  right: 20px;
+}
