@@ -1,5 +1,6 @@
 import "./style.css";
 import { addNote, removeNote } from "./src/components/note";
+import { loadSession } from "./src/session";
 
 window.addEventListener("dblclick", (event) => {
   if (event.target.classList.contains("note-text")) return;
@@ -20,8 +21,4 @@ document.querySelector('#add-button').addEventListener("click", (event) => {
   addNote(event.pageX/2.25, event.pageY/2.25);
 });
 
-
-
-
-
-//class for notes = "note"
+loadSession();
