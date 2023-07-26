@@ -6,13 +6,13 @@ const headerHeight = document
   .getBoundingClientRect().height;
 
 let counter = 1; // to be used as id for element drag
-function createNote(x, y) {
+function createNote(x, y, offset=true) {
   const noteContents = `
     <div class="note-deleter" id = "sticky${counter}" ></div>
     <textarea class="note-text" placeholder="text here" value="text here"></textarea>
   `;
+  if (offset) y = y - headerHeight;
   counter++;
-  y = y - headerHeight;
   const note = document.createElement("div");
   note.classList.add("note");
   note.innerHTML = noteContents;
@@ -105,7 +105,7 @@ export function loadSessionData() {
     // Loop through the saved data and create stickies
     notesData.forEach((noteData) => {
       const { content, position } = noteData;
-      const note = createNote(parseInt(position.left), parseInt(position.top));
+      const note = createNote(parseInt(position.left), parseInt(position.top), false);
       note.querySelector(".note-text").value = content;
 
       // Append the note to the container
