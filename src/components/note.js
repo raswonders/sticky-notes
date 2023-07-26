@@ -1,14 +1,15 @@
 import "./note.css";
 import { moveToTop, noteGallery } from "../utils";
+import { saveSession } from "../session";
 
-window.addEventListener('beforeunload', saveSessionData);
+window.addEventListener("beforeunload", saveSession);
 
 const headerHeight = document
   .querySelector("header")
   .getBoundingClientRect().height;
 
 let counter = 1; // to be used as id for element drag
-function createNote(x, y, offset=true) {
+export function createNote(x, y, offset = true) {
   const noteContents = `
     <div class="note-deleter" id = "sticky${counter}" ></div>
     <textarea class="note-text" placeholder="text here" value="text here"></textarea>
@@ -76,39 +77,4 @@ export function addNote(x, y) {
 
 export function removeNote(note) {
   document.querySelector(".note-gallery").removeChild(note);
-}
-
-// Local Storage Section
-export function saveSessionData() {
-  const notes = document.querySelectorAll(".note");
-  const sessionData = [];
-
-  notes.forEach((note) => {
-    const content = note.querySelector(".note-text").value;
-    const position = { top: note.style.top, left: note.style.left };
-
-    const noteData = { content, position };
-    sessionData.push(noteData);
-  });
-
-  localStorage.setItem("sticky_notes_session", JSON.stringify(sessionData));
-}
-
-// Load localStorage Data
-export function loadSessionData() {
-  const sessionData = localStorage.getItem("sticky_notes_session");
-
-  if (sessionData) {
-    const notesData = JSON.parse(sessionData);
-
-    // Loop through the saved data and create stickies
-    notesData.forEach((noteData) => {
-      const { content, position } = noteData;
-      const note = createNote(parseInt(position.left), parseInt(position.top), false);
-      note.querySelector(".note-text").value = content;
-
-      // Append the note to the container
-      document.querySelector(".note-gallery").appendChild(note);
-    });
-  }
 }
