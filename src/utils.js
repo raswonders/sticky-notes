@@ -1,21 +1,4 @@
-export const noteGallery = document.querySelector(".note-gallery");
-
-export function moveToTop(element, container) {
-  if (!element) {
-    console.debug("moveToTop() requires element, that exists, passed", element);
-    return;
-  }
-
-  if (!container) {
-    console.debug(
-      "moveToTop() requires container, that exists, passed",
-      container,
-    );
-    return;
-  }
-
-  container.insertBefore(element, null);
-}
+import { moveNoteToFront, focusNote } from "./components/note";
 
 export function dragElement(elmnt) {
   let cursorX, cursorY, cursorXDelta, cursorYDelta;
@@ -23,6 +6,7 @@ export function dragElement(elmnt) {
 
   function dragStart(e) {
     e.preventDefault();
+    moveNoteToFront(elmnt);
     cursorX = e.clientX;
     cursorY = e.clientY;
     // capture dragging movements outside of elmnt for smoothness
@@ -42,6 +26,7 @@ export function dragElement(elmnt) {
   }
 
   function dragEnd() {
+    focusNote(elmnt);
     document.onmouseup = null;
     document.onmousemove = null;
   }
