@@ -49,13 +49,13 @@ function dragElement(elmnt) {
     cursorYDelta = cursorY - e.clientY;
     cursorX = e.clientX;
     cursorY = e.clientY;
-    // set the element's new position:
+    // update element's position
     elmnt.style.left = elmnt.offsetLeft - cursorXDelta + "px";
     elmnt.style.top = elmnt.offsetTop - cursorYDelta + "px";
   }
 
   function closeDragElement() {
-    /* stop moving when mouse button is released:*/
+    // stop dragging when mouse button is released
     document.onmouseup = null;
     document.onmousemove = null;
   }
