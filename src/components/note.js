@@ -38,6 +38,7 @@ function dragElement(elmnt) {
     e.preventDefault();
     cursorX = e.clientX;
     cursorY = e.clientY;
+    // capture dragging movements outside of elmnt for smoothness
     document.onmouseup = closeDragElement;
     document.onmousemove = elementDrag;
   }
@@ -54,7 +55,6 @@ function dragElement(elmnt) {
   }
 
   function closeDragElement() {
-    // stop dragging when mouse button is released
     document.onmouseup = null;
     document.onmousemove = null;
   }
