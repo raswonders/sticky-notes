@@ -17,12 +17,18 @@ export function moveToTop(element, container) {
   container.insertBefore(element, null);
 }
 
+export function focusElement(elmnt) {
+  const isNote = elmnt.classList.contains("note");
+  if (isNote) elmnt.querySelector(".note-text").focus();
+  else elmnt.focus();
+}
+
 export function dragElement(elmnt) {
   let cursorX, cursorY, cursorXDelta, cursorYDelta;
   elmnt.onmousedown = dragStart;
 
   function dragStart(e) {
-    e.preventDefault();
+    moveToTop(elmnt, noteGallery);
     cursorX = e.clientX;
     cursorY = e.clientY;
     // capture dragging movements outside of elmnt for smoothness
@@ -42,6 +48,7 @@ export function dragElement(elmnt) {
   }
 
   function dragEnd() {
+    focusElement(elmnt);
     document.onmouseup = null;
     document.onmousemove = null;
   }
