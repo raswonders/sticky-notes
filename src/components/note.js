@@ -8,14 +8,12 @@ const headerHeight = document
   .querySelector("header")
   .getBoundingClientRect().height;
 
-let counter = 1; // to be used as id for element drag
 export function createNote(x, y, offset = true) {
   const noteContents = `
-    <div class="note-deleter" id = "sticky${counter}" ></div>
+    <div class="note-deleter"></div>
     <textarea class="note-text" placeholder="text here" value="text here"></textarea>
   `;
   if (offset) y = y - headerHeight;
-  counter++;
   const note = document.createElement("div");
   note.classList.add("note");
   note.innerHTML = noteContents;
