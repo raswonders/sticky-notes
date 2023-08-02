@@ -43,7 +43,6 @@ function dragElement(elmnt) {
   }
 
   function elementDrag(e) {
-    e = e || window.event;
     e.preventDefault();
     cursorXDelta = cursorX - e.clientX;
     cursorYDelta = cursorY - e.clientY;
