@@ -32,18 +32,18 @@ export function createNote(x, y, offset = true) {
 
 function dragElement(elmnt) {
   let cursorX, cursorY, cursorXDelta, cursorYDelta;
-  elmnt.onmousedown = dragMouseDown;
+  elmnt.onmousedown = dragStart;
 
-  function dragMouseDown(e) {
+  function dragStart(e) {
     e.preventDefault();
     cursorX = e.clientX;
     cursorY = e.clientY;
     // capture dragging movements outside of elmnt for smoothness
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
+    document.onmouseup = dragEnd;
+    document.onmousemove = moveElement;
   }
 
-  function elementDrag(e) {
+  function moveElement(e) {
     e.preventDefault();
     cursorXDelta = cursorX - e.clientX;
     cursorYDelta = cursorY - e.clientY;
@@ -54,7 +54,7 @@ function dragElement(elmnt) {
     elmnt.style.top = elmnt.offsetTop - cursorYDelta + "px";
   }
 
-  function closeDragElement() {
+  function dragEnd() {
     document.onmouseup = null;
     document.onmousemove = null;
   }
