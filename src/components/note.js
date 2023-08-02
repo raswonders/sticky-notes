@@ -25,7 +25,7 @@ export function createNote(x, y, offset = true) {
     moveToTop(event.currentTarget, noteGallery);
     event.currentTarget.querySelector(".note-text").focus();
   });
-  note.addEventListener("mousedown", dragElement(note)); // element drag
+  note.addEventListener("mousedown", dragElement(note));
   note.setAttribute("draggable", "true");
   return note;
 }
@@ -36,18 +36,15 @@ function dragElement(elmnt) {
 
   function dragMouseDown(e) {
     e.preventDefault();
-    // get the mouse cursor position at startup:
     cursorX = e.clientX;
     cursorY = e.clientY;
     document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
   }
 
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
-    // calculate the new cursor position:
     cursorXDelta = cursorX - e.clientX;
     cursorYDelta = cursorY - e.clientY;
     cursorX = e.clientX;
