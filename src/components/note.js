@@ -33,7 +33,6 @@ export function createNote(x, y, offset = true) {
 }
 
 function dragElement(elmnt) {
-  console.log(elmnt);
   var pos1 = 0,
     pos2 = 0,
     pos3 = 0,
@@ -51,7 +50,6 @@ function dragElement(elmnt) {
   }
 
   function elementDrag(e) {
-    console.log("yup");
     e = e || window.event;
     e.preventDefault();
     // calculate the new cursor position:
