@@ -1,5 +1,11 @@
 import { moveNoteToFront, focusNote } from "./components/note";
 
+export function focusElement(elmnt) {
+  const isNote = elmnt.classList.contains("note");
+  if (isNote) elmnt.querySelector(".note-text").focus();
+  else elmnt.focus();
+}
+
 export function dragElement(elmnt) {
   let cursorX, cursorY, cursorXDelta, cursorYDelta;
   elmnt.onmousedown = dragStart;
