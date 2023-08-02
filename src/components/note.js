@@ -33,10 +33,7 @@ export function createNote(x, y, offset = true) {
 }
 
 function dragElement(elmnt) {
-  let cursorXDelta = 0,
-    cursorYDelta = 0,
-    cursorX = 0,
-    cursorY = 0;
+  let cursorX, cursorY, cursorXDelta, cursorYDelta;
   elmnt.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
