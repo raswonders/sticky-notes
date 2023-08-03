@@ -14,10 +14,6 @@ export function moveNoteToFront(note) {
   note.style.zIndex = highestZIndex + 1;
 }
 
-export function focusNote(note) {
-  note.querySelector(".note-text").focus();
-}
-
 export function dragElement(elmnt) {
   let cursorX, cursorY, cursorXDelta, cursorYDelta;
   elmnt.onmousedown = dragStart;
@@ -44,7 +40,7 @@ export function dragElement(elmnt) {
   }
 
   function dragEnd() {
-    focusNote(elmnt);
+    focusElement(elmnt);
     document.onmouseup = null;
     document.onmousemove = null;
   }
