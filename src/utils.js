@@ -1,6 +1,31 @@
+import { addNote } from "./components/note";
+
 export const headerHeight = document
   .querySelector("header")
   .getBoundingClientRect().height;
+
+const offsetX = 50;
+const offsetY = 50;
+const noteSize = 250;
+const deleterRadius = 12.5;
+const minDistance = offsetX + noteSize + deleterRadius;
+const initLocation = { x: 0, y: headerHeight };
+let spawnLocation = { ...initLocation };
+export function placeNote() {
+  let vw = document.body.clientWidth;
+  let vh = document.body.clientHeight;
+  let isCrossingXBorder = spawnLocation.x + minDistance >= vw;
+  let isCrossingYBorder = spawnLocation.y + minDistance >= vh;
+
+  if (isCrossingXBorder || isCrossingYBorder) {
+    spawnLocation = { ...initLocation };
+  }
+
+  spawnLocation.x += offsetX;
+  spawnLocation.y += offsetY;
+
+  addNote(spawnLocation.x, spawnLocation.y);
+}
 
 export function focusElement(elmnt) {
   const isNote = elmnt.classList.contains("note");
