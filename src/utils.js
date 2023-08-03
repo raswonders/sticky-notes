@@ -1,3 +1,7 @@
+export const headerHeight = document
+  .querySelector("header")
+  .getBoundingClientRect().height;
+
 export function focusElement(elmnt) {
   const isNote = elmnt.classList.contains("note");
   if (isNote) elmnt.querySelector(".note-text").focus();
