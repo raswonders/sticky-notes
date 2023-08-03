@@ -17,6 +17,11 @@
   font-size: 24px;
 }
 
+.note-text:focus-visible {
+  outline: 2px solid #b6c0ef;
+  outline-offset: -2px;
+}
+
 .note:hover .note-deleter {
   display: block;
 }
