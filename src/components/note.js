@@ -1,12 +1,9 @@
 import "./note.css";
 import { dragElement } from "../utils";
 import { saveSession } from "../session";
+import { headerHeight } from "../utils";
 
 window.addEventListener("beforeunload", saveSession);
-
-const headerHeight = document
-  .querySelector("header")
-  .getBoundingClientRect().height;
 
 export function createNote(x, y, offset = true) {
   const noteContents = `
