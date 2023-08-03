@@ -23,16 +23,28 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// offsets for notes added by button
 const offsetX = 50;
 const offsetY = 50;
-let prevSpawnLocation = { x: 0, y: headerHeight };
+const noteSize = 250;
+const deleterRadius = 12.5;
+const minDistance = offsetX + noteSize + deleterRadius;
+const initLocation = { x: 0, y: headerHeight };
+let spawnLocation = { ...initLocation };
 document.querySelector(".add-button").addEventListener("click", () => {
-  let spawnLocation = {};
-  spawnLocation.x = prevSpawnLocation.x + offsetX;
-  spawnLocation.y = prevSpawnLocation.y + offsetY;
+  let vw = document.body.clientWidth;
+  let vh = document.body.clientHeight;
+
+  let isCrossingXBorder = spawnLocation.x + minDistance >= vw;
+  let isCrossingYBorder = spawnLocation.y + minDistance >= vh;
+
+  if (isCrossingXBorder || isCrossingYBorder) {
+    spawnLocation = { ...initLocation };
+  }
+
+  spawnLocation.x += offsetX;
+  spawnLocation.y += offsetY;
+
   addNote(spawnLocation.x, spawnLocation.y);
-  prevSpawnLocation = spawnLocation;
 });
 
 loadSession();
