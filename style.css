@@ -39,4 +39,6 @@ header span {
   z-index: 9999;
   background: #2d46bf;
   color: #f7f9ff;
+  font-size: 2.5rem;
+  line-height: 75px;
 }
