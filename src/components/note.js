@@ -2,6 +2,7 @@ import "./note.css";
 import { dragElement } from "../utils";
 import { saveSession } from "../session";
 import { headerHeight } from "../utils";
+import { moveNoteToFront } from "../utils";
 
 window.addEventListener("beforeunload", saveSession);
 
@@ -22,7 +23,9 @@ export function createNote(x, y, offset = true) {
 }
 
 export function addNote(x, y) {
-  document.querySelector(".note-gallery").appendChild(createNote(x, y));
+  const newNote = createNote(x, y);
+  moveNoteToFront(newNote);
+  document.querySelector(".note-gallery").appendChild(newNote);
 }
 
 export function removeNote(note) {
