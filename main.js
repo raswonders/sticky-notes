@@ -2,7 +2,7 @@ import "./style.css";
 import { addNote, removeNote } from "./src/components/note";
 import { loadSession } from "./src/session";
 import { moveNoteToFront } from "./src/utils";
-import { headerHeight } from "./src/utils";
+import { placeNote } from "./src/utils";
 
 window.addEventListener("dblclick", (event) => {
   if (event.target.classList.contains("note-text")) return;
@@ -23,28 +23,6 @@ window.addEventListener("click", (event) => {
   }
 });
 
-const offsetX = 50;
-const offsetY = 50;
-const noteSize = 250;
-const deleterRadius = 12.5;
-const minDistance = offsetX + noteSize + deleterRadius;
-const initLocation = { x: 0, y: headerHeight };
-let spawnLocation = { ...initLocation };
-document.querySelector(".add-button").addEventListener("click", () => {
-  let vw = document.body.clientWidth;
-  let vh = document.body.clientHeight;
-
-  let isCrossingXBorder = spawnLocation.x + minDistance >= vw;
-  let isCrossingYBorder = spawnLocation.y + minDistance >= vh;
-
-  if (isCrossingXBorder || isCrossingYBorder) {
-    spawnLocation = { ...initLocation };
-  }
-
-  spawnLocation.x += offsetX;
-  spawnLocation.y += offsetY;
-
-  addNote(spawnLocation.x, spawnLocation.y);
-});
+document.querySelector(".add-button").addEventListener("click", placeNote);
 
 loadSession();
