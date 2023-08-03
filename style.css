@@ -27,7 +27,7 @@ header span {
 }
 
 
-#add-button{
+.add-button{
   position: fixed;
   z-index: 9999;
   width: 50px;
