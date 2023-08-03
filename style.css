@@ -37,4 +37,6 @@ header span {
   bottom: 20px;
   right: 20px;
   z-index: 9999;
+  background: #2d46bf;
+  color: #f7f9ff;
 }
