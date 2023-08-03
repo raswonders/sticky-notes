@@ -12,8 +12,6 @@ body {
 }
 
 header {
-  position: fixed;
-  width: 100%;
   height: 75px;
   background: #d0d0d0;
   filter: drop-shadow(0 0 3px black);
@@ -22,10 +20,10 @@ header {
 }
 
 header span {
-  font-family: "Itim", cursive;
-  padding-left: 2rem;
+  font-family: 'Pacifico', cursive;
+  padding-left: 2rem; 
   font-size: 2.5rem;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.1rem;
 }
 
 
