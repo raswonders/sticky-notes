@@ -2,6 +2,7 @@ import "./style.css";
 import { addNote, removeNote } from "./src/components/note";
 import { loadSession } from "./src/session";
 import { moveNoteToFront } from "./src/utils";
+import { headerHeight } from "./src/utils";
 
 window.addEventListener("dblclick", (event) => {
   if (event.target.classList.contains("note-text")) return;
@@ -21,8 +22,16 @@ window.addEventListener("click", (event) => {
   }
 });
 
-document.querySelector("#add-button").addEventListener("click", (event) => {
-  addNote(event.pageX / 2.25, event.pageY / 2.25);
+// offsets for notes added by button
+const offsetX = 50;
+const offsetY = 50;
+let prevSpawnLocation = { x: 0, y: headerHeight };
+document.querySelector("#add-button").addEventListener("click", () => {
+  let spawnLocation = {};
+  spawnLocation.x = prevSpawnLocation.x + offsetX;
+  spawnLocation.y = prevSpawnLocation.y + offsetY;
+  addNote(spawnLocation.x, spawnLocation.y);
+  prevSpawnLocation = spawnLocation;
 });
 
 loadSession();
