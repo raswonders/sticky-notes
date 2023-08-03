@@ -1,9 +1,17 @@
-import { moveNoteToFront, focusNote } from "./components/note";
-
 export function focusElement(elmnt) {
   const isNote = elmnt.classList.contains("note");
   if (isNote) elmnt.querySelector(".note-text").focus();
   else elmnt.focus();
+}
+
+export function moveNoteToFront(note) {
+  const notes = document.querySelectorAll(".note");
+  const highestZIndex = Array.from(notes).reduce((maxZIndex, note) => {
+    const zIndex = parseInt(window.getComputedStyle(note).zIndex, 10);
+    return isNaN(zIndex) ? maxZIndex : Math.max(maxZIndex, zIndex);
+  }, 0);
+
+  note.style.zIndex = highestZIndex + 1;
 }
 
 export function dragElement(elmnt) {
@@ -32,7 +40,7 @@ export function dragElement(elmnt) {
   }
 
   function dragEnd() {
-    focusNote(elmnt);
+    focusElement(elmnt);
     document.onmouseup = null;
     document.onmousemove = null;
   }

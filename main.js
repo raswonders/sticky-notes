@@ -1,7 +1,7 @@
 import "./style.css";
 import { addNote, removeNote } from "./src/components/note";
 import { loadSession } from "./src/session";
-import { moveNoteToFront } from "./src/components/note";
+import { moveNoteToFront } from "./src/utils";
 
 window.addEventListener("dblclick", (event) => {
   if (event.target.classList.contains("note-text")) return;
