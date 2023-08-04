@@ -85,4 +85,4 @@ No guidelines really just make sure you run linter and formatter before every pu
 
 ## License
 
-Sticky Notes is released under the Creative Commons License. By contributing to this project, you agree to abide by the terms of this license.
+Sticky Notes is released under the MIT License. By contributing to this project, you agree to abide by the terms of this license.
